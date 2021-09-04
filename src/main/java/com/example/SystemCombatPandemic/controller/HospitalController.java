@@ -3,27 +3,25 @@ package com.example.SystemCombatPandemic.controller;
 import com.example.SystemCombatPandemic.dto.MessageResponseDTO;
 import com.example.SystemCombatPandemic.entity.Hospital;
 import com.example.SystemCombatPandemic.repository.HospitalRepository;
+import com.example.SystemCombatPandemic.service.HospitalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/hospital")
 public class HospitalController {
 
-    private HospitalRepository hospitalRepository;
+    private HospitalService hospitalService;
 
-    @Autowired //Vai chamar um contrato da interface repository para essa classe controller
-    public HospitalController(HospitalRepository hospitalRepository) {
-        this.hospitalRepository = hospitalRepository;
+    public HospitalController(HospitalService hospitalService) {
+        this.hospitalService = hospitalService;
     }
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO insertHospital(@RequestBody Hospital hospital){
-       Hospital savedHospital = hospitalRepository.save(hospital);
-        return MessageResponseDTO
-                .builder()
-        .message("Hospital criado com o id: " + savedHospital.getId())
-        .build();
+    return hospitalService.insertHospital(hospital);
     }
 
 }
