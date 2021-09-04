@@ -1,5 +1,6 @@
 package com.example.SystemCombatPandemic.entity;
 
+import com.example.SystemCombatPandemic.entity.enums.ponto_Item;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,9 +19,15 @@ public class Recursos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String nome_item;
+    private ponto_Item nome_item;
+
 
     @Column(nullable = false)
-    private String ponto_item;
+    private int ponto_item;
+
+
+    @Column(nullable = false)
+    private int qtd_item;
 }

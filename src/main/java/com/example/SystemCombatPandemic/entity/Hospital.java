@@ -27,6 +27,9 @@ public class Hospital {
     @Column(nullable = false, unique = true)
     private String cnpj;
 
+    @Column(nullable = false)
+    private int percentual;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
     private  List<Recursos> recursos;
 
