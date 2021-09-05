@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+//AQUI São as minha entidades
+
 @Entity
 @Data
 @Builder
@@ -22,6 +24,7 @@ public class Hospital {
     @Column(nullable = false)
     private String nome;
 
+    @Column(nullable = false)
     private String endereco;
 
     @Column(nullable = false, unique = true)

@@ -1,12 +1,17 @@
 package com.example.SystemCombatPandemic.controller;
 
-import com.example.SystemCombatPandemic.dto.MessageResponseDTO;
-import com.example.SystemCombatPandemic.entity.Hospital;
-import com.example.SystemCombatPandemic.repository.HospitalRepository;
+import com.example.SystemCombatPandemic.dto.response.MessageResponseDTO;
+import com.example.SystemCombatPandemic.dto.request.HospitalDTO;
 import com.example.SystemCombatPandemic.service.HospitalService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+
+
+//Aqui é a minha classe de controller onde vou receber os protocolos HTTP
 
 @RestController
 @RequestMapping("/api/hospital")
@@ -20,8 +25,14 @@ public class HospitalController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO insertHospital(@RequestBody Hospital hospital){
-    return hospitalService.insertHospital(hospital);
+    public MessageResponseDTO insertHospital(@RequestBody @Valid HospitalDTO hospitalDTO){
+    return hospitalService.insertHospital(hospitalDTO);
     }
+
+    @GetMapping
+    public List<HospitalDTO> listAll(){
+        return hospitalService.listAll();
+    }
+
 
 }
