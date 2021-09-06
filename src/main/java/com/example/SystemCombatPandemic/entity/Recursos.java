@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+//AQUI São as minha entidades
+
 @Entity
 @Data
 @Builder

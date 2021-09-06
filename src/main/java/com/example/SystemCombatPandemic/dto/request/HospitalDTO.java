@@ -30,9 +30,11 @@ public class HospitalDTO {
     private String nome;
 
     @NotEmpty
+    @Size(min = 2, max = 60)
     private String endereco;
 
     @NotEmpty
+    @Size(min = 14,max = 14)
     private String cnpj;
 
     @NotEmpty
